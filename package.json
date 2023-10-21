@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.2",
+    "dotenv": "^16.3.1",
+    "fs": "0.0.1-security",
     "joi": "^17.10.2",
     "klaw-sync": "^6.0.0"
   },
