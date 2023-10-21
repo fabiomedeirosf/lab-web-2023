@@ -1,11 +1,17 @@
 const Hapi = require("@hapi/hapi");
-const routes = require('./routes');
+const routes = require('./config/routes');
 
 const server = Hapi.server({
     port: 8000,
     host: '0.0.0.0'
 });
 
-routes.forEach((path) => server.route(path));
-
-module.exports = server;
+const plugins = [
+    {
+        plugin: routes,
+        options: {
+            routesBaseDir: './api'
+        }
+    }
+];
+module.exports = {server, plugins};
