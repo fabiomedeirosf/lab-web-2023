@@ -23,7 +23,12 @@ initEnvs();
 const allEnvs = {
 
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+
+    jwt: {
+        enable: process.env.JWT_ENABLE || true,
+        secret: process.env.JWT_SECRET || 'fatec-franca'
+    }
 };
 
 module.exports = allEnvs;

@@ -18,20 +18,22 @@ const plugins = [
 ];
 
 const validate = async (decoded, request, h) => {
-    console.log('validate');
-    console.log(decoded);
-
+    
     return {isValid: true};
 }
 
-server.register(HapiJWT);
+//enable jwt by config
+if(config.jwt.enable === 'true') {
+    
+    server.register(HapiJWT);
 
-server.auth.strategy('jwt', 'jwt',
-{
-    key: 'empresario',
-    validate
-});
+    server.auth.strategy('jwt', 'jwt',
+    {
+        key: config.jwt.secret,
+        validate
+    });
 
-server.auth.default('jwt');
+    server.auth.default('jwt');
+}
 
 module.exports = {server, plugins};
