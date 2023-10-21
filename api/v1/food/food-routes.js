@@ -9,12 +9,18 @@ const plugin = {
             {
                 method: "GET",
                 path: "/foods",
-                handler: controller.getFoods
+                options: {
+                    tags: ['api'],
+                    description: 'Consulta lista de comidas',
+                    handler: controller.getFoods
+                }
             },
             {
                 method: "POST",
                 path: "/foods",
                 options: {
+                    tags: ['api'],
+                    description: 'cadastra comida',
                     handler: controller.create,
                     validate: schema.postFood
                 }
